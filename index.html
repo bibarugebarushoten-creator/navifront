@@ -1,60 +1,64 @@
 <div class="ofgf-rabbit-hole">
-  <div class="ofgf-bg-text">ENTER THE SCENE</div>
 
-  <div class="ofgf-card">
-    <p class="ofgf-kicker">OFFICIALGF.exe</p>
-    <h2>Where do you want to go?</h2>
-    <p class="ofgf-subtitle">
-      Pick a portal into Japanese music, livehouses, underground scenes, and weird little discoveries.
+  <div class="ofgf-inner">
+
+    <div class="ofgf-title-row">
+      <div class="ofgf-stars left">✦✧★✩☆★✧✦</div>
+      <h2>WHERE DO YOU WANT TO GO?</h2>
+      <div class="ofgf-stars right">✦✧★✩☆★✧✦</div>
+    </div>
+
+    <p class="ofgf-sub">
+      Pick a portal into Japanese music, Tokyo livehouses, scene guides, and random discoveries.
     </p>
 
     <div class="ofgf-grid">
-      <a href="#" class="ofgf-portal">
+
+      <a href="#" class="ofgf-box yellow">
         <span>01</span>
-        <strong>Start Here</strong>
-        <small>New to the blog? Begin the rabbit hole.</small>
+        <h3>START HERE</h3>
+        <p>New to the blog? Begin the rabbit hole.</p>
       </a>
 
-      <a href="#" class="ofgf-portal">
+      <a href="#" class="ofgf-box pink">
         <span>02</span>
-        <strong>Random Discovery</strong>
-        <small>Find an artist, post, or scene note by chance.</small>
+        <h3>RANDOM DISCOVERY</h3>
+        <p>Find a random artist, venue, guide, or hidden post.</p>
       </a>
 
-      <a href="#" class="ofgf-portal">
+      <a href="#" class="ofgf-box blue">
         <span>03</span>
-        <strong>Scene Map</strong>
-        <small>Explore Tokyo neighborhoods and livehouses.</small>
+        <h3>SCENE MAP</h3>
+        <p>Explore Tokyo neighborhoods, livehouses, and scenes.</p>
       </a>
 
-      <a href="#" class="ofgf-portal">
+      <a href="#" class="ofgf-box yellow">
         <span>04</span>
-        <strong>How to Attend Shows</strong>
-        <small>Tickets, etiquette, venues, and first-timer tips.</small>
+        <h3>ATTEND SHOWS</h3>
+        <p>Ticket guides, etiquette, livehouse tips, and first-timer help.</p>
       </a>
+
     </div>
 
-    <button class="ofgf-random-btn" onclick="ofgfRandomRabbitHole()">
-      ✦ take me somewhere ✦
+    <button onclick="ofgfRandomPortal()" class="ofgf-random">
+      ★ TAKE ME SOMEWHERE ★
     </button>
+
   </div>
 </div>
 
 <script>
-function ofgfRandomRabbitHole() {
+function ofgfRandomPortal() {
   const links = [
-    "#", // Start Here
-    "#", // Random Discovery
-    "#", // Scene Map
-    "#", // How to Attend Shows
-    "#", // Add an artist guide
-    "#", // Add a playlist page
-    "#", // Add a live report
-    "#", // Add a hidden favorite post
+    "/start-here",
+    "/scene-map",
+    "/tokyo-live-guide",
+    "/category/new-finds",
+    "/tag/live-report",
+    "/playlist"
   ];
 
-  const randomLink = links[Math.floor(Math.random() * links.length)];
-  window.location.href = randomLink;
+  window.location.href = links[Math.floor(Math.random() * links.length)];
 }
 </script>
 
@@ -62,154 +66,171 @@ function ofgfRandomRabbitHole() {
 .ofgf-rabbit-hole {
   position: relative;
   overflow: hidden;
-  padding: 48px 18px;
-  background:
-    radial-gradient(circle at top left, #ff4fd8 0, transparent 28%),
-    radial-gradient(circle at bottom right, #00e5ff 0, transparent 30%),
-    linear-gradient(135deg, #fff82e, #fffb8a);
-  border: 3px solid #000;
+  padding: 55px 18px;
+  background: transparent;
   font-family: "Courier New", monospace;
 }
 
-.ofgf-bg-text {
-  position: absolute;
-  inset: auto -20px 8px auto;
-  font-size: clamp(42px, 9vw, 120px);
-  font-weight: 900;
-  color: rgba(0,0,0,0.08);
-  letter-spacing: -5px;
-  white-space: nowrap;
-  pointer-events: none;
-}
-
-.ofgf-card {
-  position: relative;
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 28px;
-  background: rgba(255,255,255,0.82);
-  border: 3px solid #000;
-  box-shadow: 10px 10px 0 #000;
+.ofgf-inner {
+  max-width: 1100px;
+  margin: auto;
+  padding: 36px;
+  background: rgba(255,255,255,0.08);
+  border: 2px solid rgba(255,255,255,0.35);
   backdrop-filter: blur(6px);
 }
 
-.ofgf-kicker {
-  display: inline-block;
-  margin: 0 0 10px;
-  padding: 5px 10px;
-  background: #000;
-  color: #fff82e;
-  font-size: 13px;
-  font-weight: bold;
+.ofgf-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  text-align: center;
 }
 
-.ofgf-card h2 {
+.ofgf-title-row h2 {
   margin: 0;
-  font-size: clamp(30px, 6vw, 64px);
-  line-height: 0.95;
-  text-transform: uppercase;
-  letter-spacing: -3px;
   color: #000;
+  font-size: clamp(30px, 5vw, 58px);
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: -3px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 #fff82e;
 }
 
-.ofgf-subtitle {
-  max-width: 680px;
-  margin: 14px 0 24px;
-  font-size: 16px;
-  color: #111;
+.ofgf-stars {
+  color: #000;
+  font-size: clamp(28px, 5vw, 58px);
+  font-weight: 900;
+  white-space: nowrap;
+  letter-spacing: -8px;
+  transform: scaleX(1.35);
+  text-shadow: 2px 2px 0 #fff82e;
+}
+
+.ofgf-stars.left {
+  transform: scaleX(1.35) rotate(-5deg);
+}
+
+.ofgf-stars.right {
+  transform: scaleX(1.35) rotate(5deg);
+}
+
+.ofgf-sub {
+  max-width: 720px;
+  margin: 18px auto 32px;
+  text-align: center;
+  color: #000;
+  font-size: 15px;
+  line-height: 1.5;
+  background: rgba(255,255,0,0.75);
+  border: 2px solid #000;
+  padding: 10px 14px;
 }
 
 .ofgf-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
+  gap: 16px;
 }
 
-.ofgf-portal {
-  min-height: 150px;
+.ofgf-box {
+  min-height: 190px;
   padding: 16px;
-  background: #fff;
   color: #000;
-  border: 2px solid #000;
   text-decoration: none;
-  box-shadow: 5px 5px 0 #000;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  border: 2px solid #000;
+  box-shadow: 6px 6px 0 #000;
+  transition: 0.18s ease;
 }
 
-.ofgf-portal:hover {
-  transform: translate(-3px, -3px);
-  box-shadow: 8px 8px 0 #000;
-  background: #ff4fd8;
-  color: #000;
+.ofgf-box:hover {
+  transform: translate(-4px, -4px) rotate(-1deg);
+  box-shadow: 10px 10px 0 #000;
 }
 
-.ofgf-portal span {
+.ofgf-box span {
   display: inline-block;
-  margin-bottom: 18px;
-  padding: 3px 7px;
-  background: #00e5ff;
-  border: 1px solid #000;
+  margin-bottom: 28px;
+  padding: 4px 8px;
+  background: #000;
+  color: #fff82e;
   font-size: 12px;
   font-weight: bold;
 }
 
-.ofgf-portal strong {
-  display: block;
-  font-size: 20px;
-  line-height: 1;
-  text-transform: uppercase;
+.ofgf-box h3 {
+  margin: 0;
+  font-size: 25px;
+  line-height: 0.95;
+  letter-spacing: -2px;
 }
 
-.ofgf-portal small {
-  display: block;
-  margin-top: 10px;
+.ofgf-box p {
+  margin-top: 14px;
   font-size: 13px;
-  line-height: 1.3;
+  line-height: 1.45;
 }
 
-.ofgf-random-btn {
+.yellow {
+  background: rgba(255, 248, 46, 0.88);
+}
+
+.pink {
+  background: rgba(255, 79, 216, 0.88);
+}
+
+.blue {
+  background: rgba(0, 229, 255, 0.88);
+}
+
+.ofgf-random {
   display: block;
-  margin: 26px auto 0;
-  padding: 13px 22px;
+  margin: 36px auto 0;
+  padding: 14px 26px;
   background: #000;
   color: #fff82e;
   border: 2px solid #000;
   font-family: "Courier New", monospace;
-  font-size: 16px;
-  font-weight: bold;
-  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: 900;
   cursor: pointer;
   box-shadow: 5px 5px 0 #ff4fd8;
 }
 
-.ofgf-random-btn:hover {
+.ofgf-random:hover {
   background: #fff82e;
   color: #000;
   box-shadow: 5px 5px 0 #00e5ff;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   .ofgf-grid {
     grid-template-columns: 1fr 1fr;
   }
 
-  .ofgf-card {
-    padding: 22px;
-    box-shadow: 6px 6px 0 #000;
+  .ofgf-title-row {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .ofgf-stars {
+    letter-spacing: -6px;
   }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 560px) {
   .ofgf-grid {
     grid-template-columns: 1fr;
   }
 
-  .ofgf-rabbit-hole {
-    padding: 28px 12px;
+  .ofgf-inner {
+    padding: 24px 16px;
   }
 
-  .ofgf-card h2 {
-    letter-spacing: -2px;
+  .ofgf-box {
+    min-height: 150px;
   }
 }
 </style>
