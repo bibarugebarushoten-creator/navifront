@@ -1,236 +1,160 @@
-<div class="ofgf-rabbit-hole">
+<div class="ofgf-mini-nav">
+  <style>
+    .ofgf-mini-nav {
+      --ink:#111; --cream:#fff8dc; --yellow:#ffd900; --red:#e12727;
+      max-width:820px; margin:24px auto; padding:18px;
+      border:3px solid var(--ink); background:var(--cream);
+      font-family:Arial, sans-serif; box-shadow:5px 5px 0 var(--ink);
+      position:relative; overflow:hidden;
+    }
 
-  <div class="ofgf-inner">
+    .ofgf-mini-nav:before {
+      content:"✦ ★ ✧ ✦ ★ ✧ ✦";
+      position:absolute; top:10px; right:14px;
+      color:var(--red); letter-spacing:5px; font-size:14px;
+      animation:ofgfSparkle 1.2s infinite alternate;
+    }
 
-    <div class="ofgf-title-row">
-      <div class="ofgf-stars left">✦✧★✩☆★✧✦</div>
-      <h2>WHERE DO YOU WANT TO GO?</h2>
-      <div class="ofgf-stars right">✦✧★✩☆★✧✦</div>
-    </div>
+    @keyframes ofgfSparkle {
+      from {opacity:.3; transform:translateY(0);}
+      to {opacity:1; transform:translateY(-2px);}
+    }
 
-    <p class="ofgf-sub">
-      Pick a portal into Japanese music, Tokyo livehouses, scene guides, and random discoveries.
-    </p>
+    .ofgf-logo {
+      display:block; max-width:300px; width:100%; height:auto;
+      margin-bottom:10px; transition:.2s;
+      filter:drop-shadow(3px 3px 0 #111);
+    }
 
-    <div class="ofgf-grid">
+    .ofgf-logo:hover { transform:rotate(-1deg) scale(1.03); }
 
-      <a href="#" class="ofgf-box yellow">
-        <span>01</span>
-        <h3>START HERE</h3>
-        <p>New to the blog? Begin the rabbit hole.</p>
-      </a>
+    .ofgf-mini-sub {
+      display:inline-block; margin:0 0 14px;
+      background:#111; color:#fff; padding:6px 10px;
+      font-size:11px; font-weight:900; letter-spacing:1px;
+      text-transform:uppercase;
+    }
 
-      <a href="#" class="ofgf-box pink">
-        <span>02</span>
-        <h3>RANDOM DISCOVERY</h3>
-        <p>Find a random artist, venue, guide, or hidden post.</p>
-      </a>
+    .ofgf-mini-grid {
+      display:grid; grid-template-columns:repeat(5,1fr); gap:8px;
+      margin-bottom:12px;
+    }
 
-      <a href="#" class="ofgf-box blue">
-        <span>03</span>
-        <h3>SCENE MAP</h3>
-        <p>Explore Tokyo neighborhoods, livehouses, and scenes.</p>
-      </a>
+    .ofgf-mini-grid a,
+    .ofgf-mini-random {
+      border:2px solid var(--ink); background:#fffdf4; color:var(--ink);
+      text-decoration:none; padding:11px 8px; font-size:11px;
+      font-weight:900; text-align:center; box-shadow:3px 3px 0 var(--ink);
+      cursor:pointer; transition:.15s; text-transform:uppercase; line-height:1.25;
+    }
 
-      <a href="#" class="ofgf-box yellow">
-        <span>04</span>
-        <h3>ATTEND SHOWS</h3>
-        <p>Ticket guides, etiquette, livehouse tips, and first-timer help.</p>
-      </a>
+    .ofgf-mini-grid a:hover,
+    .ofgf-mini-random:hover {
+      background:var(--yellow); transform:translate(2px,2px);
+      box-shadow:1px 1px 0 var(--ink);
+    }
 
-    </div>
+    .ofgf-mini-grid span {
+      display:block; font-size:19px; margin-bottom:3px;
+    }
 
-    <button onclick="ofgfRandomPortal()" class="ofgf-random">
-      ★ TAKE ME SOMEWHERE ★
-    </button>
+    .ofgf-feature-row {
+      display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:8px;
+      margin-top:10px;
+    }
 
+    .ofgf-feature {
+      display:block; text-decoration:none; color:#111;
+      border:2px dashed #111; background:#fffdf4;
+      padding:10px; font-size:12px; font-weight:800;
+      line-height:1.35; transition:.15s;
+    }
+
+    .ofgf-feature strong {
+      display:block; font-family:"Arial Black", Arial, sans-serif;
+      font-size:13px; color:var(--red); text-transform:uppercase;
+      margin-bottom:3px;
+    }
+
+    .ofgf-feature:hover {
+      background:#111; color:#fff; border-style:solid;
+    }
+
+    .ofgf-feature:hover strong { color:var(--yellow); }
+
+    .ofgf-mini-result {
+      margin-top:12px; padding:10px 12px;
+      border:2px solid var(--ink); background:#111; color:#fff;
+      font-size:12px; font-weight:800; display:none; line-height:1.5;
+      box-shadow:3px 3px 0 var(--red);
+    }
+
+    .ofgf-mini-result a {
+      color:var(--yellow); font-weight:900;
+    }
+
+    .ofgf-tiny-note {
+      margin-top:12px; font-size:11px; font-weight:900;
+      text-transform:uppercase; letter-spacing:.7px;
+    }
+
+    @media (max-width:700px) {
+      .ofgf-mini-grid { grid-template-columns:repeat(2,1fr); }
+      .ofgf-feature-row { grid-template-columns:1fr; }
+      .ofgf-logo { max-width:230px; }
+    }
+  </style>
+
+  <img class="ofgf-logo" src="YOUR-LOGO-URL-HERE" alt="OfficialGF Logo">
+
+  <div class="ofgf-mini-sub">click around the japanese music internet</div>
+
+  <div class="ofgf-mini-grid">
+    <a href="/blog/"><span>★</span>New Finds</a>
+    <a href="/scene-map/"><span>⌖</span>Scene Map</a>
+    <a href="/playlists/"><span>♫</span>Playlists</a>
+    <a href="/live-reports/"><span>▣</span>Live Reports</a>
+    <button class="ofgf-mini-random" onclick="ofgfMiniRandom()"><span>✦</span>Random</button>
   </div>
+
+  <div class="ofgf-feature-row">
+    <a class="ofgf-feature" href="/scene-map/">
+      <strong>Start Here</strong>
+      Walk through Tokyo’s live house neighborhoods.
+    </a>
+
+    <a class="ofgf-feature" href="/playlists/">
+      <strong>OFGF Radio</strong>
+      Pick a playlist and disappear.
+    </a>
+
+    <a class="ofgf-feature" href="/category/artist-deep-dives/">
+      <strong>Deep Dives</strong>
+      For artist rabbit holes.
+    </a>
+  </div>
+
+  <div class="ofgf-mini-result" id="ofgf-mini-result"></div>
+
+  <div class="ofgf-tiny-note">
+    ✧ one click = one new obsession ✧
+  </div>
+
+  <script>
+    const ofgfMiniLinks = [
+      { title:"Tokyo Live House Scene Map", url:"/scene-map/" },
+      { title:"OFGF Playlists", url:"/playlists/" },
+      { title:"New Japanese Music Finds", url:"/blog/" },
+      { title:"Live Reports", url:"/live-reports/" },
+      { title:"Artist Deep Dives", url:"/category/artist-deep-dives/" },
+      { title:"Vocaloid + Internet Music", url:"/category/vocaloid/" }
+    ];
+
+    function ofgfMiniRandom() {
+      const pick = ofgfMiniLinks[Math.floor(Math.random() * ofgfMiniLinks.length)];
+      const result = document.getElementById("ofgf-mini-result");
+      result.style.display = "block";
+      result.innerHTML = `✦ Random rabbit hole: <a href="${pick.url}">${pick.title} →</a>`;
+    }
+  </script>
 </div>
-
-<script>
-function ofgfRandomPortal() {
-  const links = [
-    "/start-here",
-    "/scene-map",
-    "/tokyo-live-guide",
-    "/category/new-finds",
-    "/tag/live-report",
-    "/playlist"
-  ];
-
-  window.location.href = links[Math.floor(Math.random() * links.length)];
-}
-</script>
-
-<style>
-.ofgf-rabbit-hole {
-  position: relative;
-  overflow: hidden;
-  padding: 55px 18px;
-  background: transparent;
-  font-family: "Courier New", monospace;
-}
-
-.ofgf-inner {
-  max-width: 1100px;
-  margin: auto;
-  padding: 36px;
-  background: rgba(255,255,255,0.08);
-  border: 2px solid rgba(255,255,255,0.35);
-  backdrop-filter: blur(6px);
-}
-
-.ofgf-title-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  text-align: center;
-}
-
-.ofgf-title-row h2 {
-  margin: 0;
-  color: #000;
-  font-size: clamp(30px, 5vw, 58px);
-  line-height: 1;
-  font-weight: 900;
-  letter-spacing: -3px;
-  text-transform: uppercase;
-  text-shadow: 2px 2px 0 #fff82e;
-}
-
-.ofgf-stars {
-  color: #000;
-  font-size: clamp(28px, 5vw, 58px);
-  font-weight: 900;
-  white-space: nowrap;
-  letter-spacing: -8px;
-  transform: scaleX(1.35);
-  text-shadow: 2px 2px 0 #fff82e;
-}
-
-.ofgf-stars.left {
-  transform: scaleX(1.35) rotate(-5deg);
-}
-
-.ofgf-stars.right {
-  transform: scaleX(1.35) rotate(5deg);
-}
-
-.ofgf-sub {
-  max-width: 720px;
-  margin: 18px auto 32px;
-  text-align: center;
-  color: #000;
-  font-size: 15px;
-  line-height: 1.5;
-  background: rgba(255,255,0,0.75);
-  border: 2px solid #000;
-  padding: 10px 14px;
-}
-
-.ofgf-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-}
-
-.ofgf-box {
-  min-height: 190px;
-  padding: 16px;
-  color: #000;
-  text-decoration: none;
-  border: 2px solid #000;
-  box-shadow: 6px 6px 0 #000;
-  transition: 0.18s ease;
-}
-
-.ofgf-box:hover {
-  transform: translate(-4px, -4px) rotate(-1deg);
-  box-shadow: 10px 10px 0 #000;
-}
-
-.ofgf-box span {
-  display: inline-block;
-  margin-bottom: 28px;
-  padding: 4px 8px;
-  background: #000;
-  color: #fff82e;
-  font-size: 12px;
-  font-weight: bold;
-}
-
-.ofgf-box h3 {
-  margin: 0;
-  font-size: 25px;
-  line-height: 0.95;
-  letter-spacing: -2px;
-}
-
-.ofgf-box p {
-  margin-top: 14px;
-  font-size: 13px;
-  line-height: 1.45;
-}
-
-.yellow {
-  background: rgba(255, 248, 46, 0.88);
-}
-
-.pink {
-  background: rgba(255, 79, 216, 0.88);
-}
-
-.blue {
-  background: rgba(0, 229, 255, 0.88);
-}
-
-.ofgf-random {
-  display: block;
-  margin: 36px auto 0;
-  padding: 14px 26px;
-  background: #000;
-  color: #fff82e;
-  border: 2px solid #000;
-  font-family: "Courier New", monospace;
-  font-size: 15px;
-  font-weight: 900;
-  cursor: pointer;
-  box-shadow: 5px 5px 0 #ff4fd8;
-}
-
-.ofgf-random:hover {
-  background: #fff82e;
-  color: #000;
-  box-shadow: 5px 5px 0 #00e5ff;
-}
-
-@media (max-width: 900px) {
-  .ofgf-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .ofgf-title-row {
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .ofgf-stars {
-    letter-spacing: -6px;
-  }
-}
-
-@media (max-width: 560px) {
-  .ofgf-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .ofgf-inner {
-    padding: 24px 16px;
-  }
-
-  .ofgf-box {
-    min-height: 150px;
-  }
-}
-</style>
